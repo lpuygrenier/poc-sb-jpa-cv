@@ -53,3 +53,23 @@ INSERT INTO cv_language (cv_id, language_id, level_id) VALUES
 INSERT INTO cv_language (cv_id, language_id, level_id) VALUES
   (3, 1, 1),
   (3, 2, 2);
+
+
+--changeset lpuygrenier:2
+DELETE FROM cv_language;
+DELETE FROM cv;
+
+ALTER TABLE cv DROP COLUMN name;
+
+CREATE TABLE app_user (
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR(255) NOT NULL
+);
+
+INSERT INTO app_user (name) VALUES
+  ('Armand'),
+  ('Emie'),
+  ('Leo');
+
+ALTER TABLE cv ADD COLUMN user_id INT NOT NULL;
+ALTER TABLE cv ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES app_user(id);

@@ -1,6 +1,8 @@
-package com.example.demo;
+package com.example.demo.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.entity.Cv;
 
 public interface CvRepository extends JpaRepository<Cv, Integer> {
 }

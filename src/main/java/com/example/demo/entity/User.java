@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -6,11 +6,13 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = "cv")
+@Table(name = "app_user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cv {
+@Builder
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -18,6 +20,6 @@ public class Cv {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "cv", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<CvLanguage> cvLanguages;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Cv> cvs;
 }
