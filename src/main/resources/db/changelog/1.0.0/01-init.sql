@@ -66,10 +66,5 @@ CREATE TABLE app_user (
     name VARCHAR(255) NOT NULL
 );
 
-INSERT INTO app_user (name) VALUES
-  ('Armand'),
-  ('Emie'),
-  ('Leo');
-
 ALTER TABLE cv ADD COLUMN user_id INT NOT NULL;
 ALTER TABLE cv ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES app_user(id);
